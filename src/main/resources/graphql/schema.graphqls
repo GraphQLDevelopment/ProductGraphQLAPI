@@ -1,0 +1,23 @@
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+}
+
+type ProductPagination {
+    products: [Product!]!
+    hasNextPage: Boolean!
+    endCursor: String
+    total: Int!
+}
+
+type Query {
+    getAllProducts(first: Int, after: String): ProductPagination!
+    getProductById(id: ID!): Product
+    healthCheck: String
+    getProductsWithPagination(first: Int, after: String): ProductPagination!
+}
+
+type Mutation {
+    createProduct(name: String!, price: Float!): Product
+}
